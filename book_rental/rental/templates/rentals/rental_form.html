@@ -1,0 +1,12 @@
+<!-- rentals/templates/rentals/rental_form.html -->
+
+{% extends "rentals/base.html" %}
+
+{% block content %}
+<h2>Start a New Rental</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Start Rental</button>
+</form>
+{% endblock %}

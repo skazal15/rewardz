@@ -1,0 +1,35 @@
+<!-- rentals/templates/rentals/student_dashboard.html -->
+
+{% extends "rentals/base.html" %}
+
+{% block content %}
+<h2>{{ user.username }}'s Rental Dashboard</h2>
+{% if rentals %}
+    <table>
+        <thead>
+            <tr>
+                <th>Book</th>
+                <th>Rental Date</th>
+                <th>Extended</th>
+                <th>Fees</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rental in rentals %}
+            <tr>
+                <td>{{ rental.book.title }}</td>
+                <td>{{ rental.rental_date }}</td>
+                <td>{{ rental.extended }}</td>
+                <td>${{ rental.fees }}</td>
+                <td>
+                    <a href="{% url 'rental:rental_detail' rental.pk %}">View Details</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No rentals found for this student.</p>
+{% endif %}
+{% endblock %}

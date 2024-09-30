@@ -1,0 +1,17 @@
+<!-- rentals/templates/rentals/rental_detail.html -->
+
+{% extends "rentals/base.html" %}
+
+{% block content %}
+<h2>Rental Details</h2>
+<ul>
+    <li><strong>User:</strong> {{ rental.user.username }}</li>
+    <li><strong>Book:</strong> {{ rental.book.title }}</li>
+    <li><strong>Rental Date:</strong> {{ rental.rental_date }}</li>
+    <li><strong>Extended:</strong> {{ rental.extended }}</li>
+    <li><strong>Fees:</strong> ${{ rental.fees }}</li>
+</ul>
+<p>
+    <a href="{% url 'rental:student_dashboard' rental.user.id %}">Back to Dashboard</a>
+</p>
+{% endblock %}

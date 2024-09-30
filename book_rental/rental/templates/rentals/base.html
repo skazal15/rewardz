@@ -1,0 +1,38 @@
+<!-- rentals/templates/rentals/base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Rental System</title>
+    <!-- CSS can be added here -->
+</head>
+<body>
+    <header>
+        <h1>Book Rental System</h1>
+        <nav>
+            <a href="{% url 'rental:start_rental' %}">Start Rental</a> |
+            <a href="{% url 'rental:extend_rental' %}">Extend Rental</a> |
+            <a href="{% url 'admin:index' %}">Admin</a>
+        </nav>
+    </header>
+    <hr>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <hr>
+        <p>&copy; 2023 Book Rental System</p>
+    </footer>
+</body>
+</html>

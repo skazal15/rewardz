@@ -1,0 +1,12 @@
+<!-- rentals/templates/rentals/rental_confirm_extend.html -->
+
+{% extends "rentals/base.html" %}
+
+{% block content %}
+<h2>Rental Extended Successfully</h2>
+<p>Rental for '{{ rental.book.title }}' has been extended for {{ rental.user.username }}.</p>
+<p>Current Fees: ${{ rental.fees }}</p>
+<p>
+    <a href="{% url 'rental:student_dashboard' rental.user.id %}">Go to Student Dashboard</a>
+</p>
+{% endblock %}
